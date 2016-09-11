@@ -508,7 +508,8 @@ void LvrQueryUpdater::updateGibbsDontCareRB()
 	{
 		if(!values[i])
 		{
-			rbestimates->incrementValue(keys[i],&(LogDouble(0.5,false)));
+			LogDouble logDouble = LogDouble(0.5,false);
+			rbestimates->incrementValue(keys[i],&logDouble);
 		}
 		lvrAtomHashUpdateFlags->setValue(keys[i],false);
 	}
