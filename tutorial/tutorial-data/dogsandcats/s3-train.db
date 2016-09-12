@@ -1,0 +1,24 @@
+// Sentence: Big dogs chase big cats
+Token("big",0)
+Token("dogs",1)
+Token("chase",2)
+Token("big",3)
+Token("cats",4)
+
+// Training
+Adj(0,1)
+N(1,2)
+V(2,3)
+Adj(3,4)
+N(4,5)
+
+S(0,5)
+NP(0,2)
+VP(2,5)
+NP(3,5)
+
+Succ(1,0)
+Succ(2,1)
+Succ(3,2)
+Succ(4,3)
+Succ(5,4)

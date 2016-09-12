@@ -1,0 +1,7 @@
+throw = {1,...,20}
+face = {1,...,6}
+
+Outcome(throw, face!)
+
+// Learn weight for each face
+Outcome(t, +f)

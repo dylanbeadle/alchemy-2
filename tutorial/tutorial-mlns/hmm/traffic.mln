@@ -1,0 +1,14 @@
+// Evidence: observations
+Obs(obs!, time)
+// Query: Find most likely sequence of states resulting in the observations
+// In each time step, there is exactly one state and observation
+State(state!, time)
+Succ(time, time)
+
+// Probability of starting state
+State(+s, 0)
+// Transition probabilities
+State(+s1, t1) ^ Succ(t2, t1) => State(+s2, t2)
+// Output probabilities
+Obs(+o, t) => State(+s, t)
+

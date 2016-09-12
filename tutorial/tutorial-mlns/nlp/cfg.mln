@@ -1,0 +1,68 @@
+// Weighted CFG in Chomsky normal form
+
+// Sentence
+S(position, position)
+// Noun Phrase
+NP(position, position)
+// Verb Phrase
+VP(position, position)
+
+N(position, position)
+V(position, position)
+Det(position, position)
+Adj(position, position)
+
+// Terminals
+Token(token, position)
+Succ(position, position)
+
+// S -> NP VP
+NP(i,j) ^ VP(j,k) => S(i,k)
+
+// NP -> Adj Noun
+Adj(i,j) ^ N(j,k) => NP(i,k)
+
+// NP -> Det N
+Det(i,j) ^ N(j,k) => NP(i,k)
+
+// VP -> V NP
+V(i,j) ^ NP(j,k) => VP(i,k)
+
+// Lexicon
+
+// Determiners
+Token("a",i) ^ Succ(j,i) => Det(i,j)
+Token("the",i) ^ Succ(j,i) => Det(i,j)
+
+// Adjectives
+Token("big",i) ^ Succ(j,i) => Adj(i,j)
+Token("small",i) ^ Succ(j,i) => Adj(i,j)
+
+// Nouns
+Token("dogs",i) ^ Succ(j,i) => N(i,j)
+Token("dog",i) ^ Succ(j,i) => N(i,j)
+Token("cats",i) ^ Succ(j,i) => N(i,j)
+Token("cat",i) ^ Succ(j,i) => N(i,j)
+Token("fly",i) ^ Succ(j,i) => N(i,j)
+Token("flies",i) ^ Succ(j,i) => N(i,j)
+
+// Verbs
+Token("chase",i) ^ Succ(j,i) => V(i,j)
+Token("chases",i) ^ Succ(j,i) => V(i,j)
+Token("eat",i) ^ Succ(j,i) => V(i,j)
+Token("eats",i) ^ Succ(j,i) => V(i,j)
+Token("fly",i) ^ Succ(j,i) => V(i,j)
+Token("flies",i) ^ Succ(j,i) => V(i,j)
+
+
+// Mutual exclusion rules
+999 NP(i,k) ^ Det(i,j) ^ Succ(j,i) => !Adj(i,j)
+
+999 !Det(i,j) v !Adj(i,j)
+999 !Det(i,j) v !N(i,j)
+999 !Det(i,j) v !V(i,j)
+999 !Adj(i,j) v !N(i,j)
+999 !Adj(i,j) v !V(i,j)
+999 !N(i,j) v !V(i,j)
+
+

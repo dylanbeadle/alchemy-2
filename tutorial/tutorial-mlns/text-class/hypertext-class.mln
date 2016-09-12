@@ -1,0 +1,12 @@
+// Has indicates the words in each document
+HasWord(word, page)
+// Topic indicates the class of each page
+Topic(class, page)
+
+HasWord(+w, p) => Topic(+c, p)
+
+// Hypertext classification
+Links(page, page)
+
+Topic(t, p1) ^ Links(p1, p2) => Topic(t, p2)
+

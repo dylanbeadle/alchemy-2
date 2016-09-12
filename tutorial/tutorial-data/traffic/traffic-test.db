@@ -1,0 +1,5 @@
+Obs(Red, 2)
+Obs(Yellow, 1)
+Obs(Green, 0)
+Succ(1, 0)
+Succ(2, 1)

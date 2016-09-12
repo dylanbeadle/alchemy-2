@@ -1,0 +1,14 @@
+// Sentence: Big dogs chase small flies
+Token("big",0)
+Token("dogs",1)
+Token("chase",2)
+Token("small",3)
+Token("flies",4)
+
+S(0,5)
+
+Succ(1,0)
+Succ(2,1)
+Succ(3,2)
+Succ(4,3)
+Succ(5,4)

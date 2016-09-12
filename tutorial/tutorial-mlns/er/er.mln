@@ -1,0 +1,11 @@
+// MLN for Entity Resolution of Citations
+HasToken(token, field, citation)
+SameField(field, citation, citation)
+SameCitation(citation, citation)
+
+HasToken(+t, +f, c1) ^ HasToken(+t, +f, c2) => SameField(+f, c1, c2)
+
+SameField(+f, c1, c2) => SameCitation(c1, c2)
+
+SameCitation(c1, c2) ^ SameCitation(c2, c3) => SameCitation(c1, c3)
+

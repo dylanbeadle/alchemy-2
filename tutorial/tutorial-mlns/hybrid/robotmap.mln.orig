@@ -1,0 +1,78 @@
+/////////////////////////type declarations start/////////////////////////////
+
+type = { Wall, Door }
+seg = { L0_10, ... , L0_89 }
+line = { LL1, LL2, LL3, LL4, LL5, LL6 }
+
+//////////////////////////type declarations end///////////////////////////////
+
+
+////////////////////////////predicate declarations start///////////////////////
+
+////////////////////////////discrete predicates start//////////////////////////
+
+// The segment is of the type (query) 
+SegType(seg,type!)
+ 
+// The segment is part of the line (query)
+PartOf(seg, line)
+   
+// The angle between two segments is below some threshold, 
+// and so is the perpendicular distance between them (evidence)
+Aligned(seg,seg)
+
+// The x,y coordinates of the initial point of the segment (evidence)
+X_si(seg) 
+Y_si(seg)
+
+// The x,y coordinates of the final point of the segment (evidence)
+X_sf(seg)
+Y_sf(seg)
+
+// The x,y coordinates of the initial point of the line (query)
+X_li(line)
+Y_li(line)
+
+// The x,y coordinates of the final point of the line (query)
+X_lf(line)
+Y_lf(line)
+
+// The length of the segment (evidence)
+Length(seg)
+
+// The depth of the segment, i.e., the signed perpendicular distance of the
+// segment's midpoint to the nearest line (evidence)
+Depth(seg)
+
+
+//////////////////////////////formulas start//////////////////////////////////
+
+//////////////////////////discrete formulas start/////////////////////////////
+
+// Unit clause for the prior probability of each type; 
+// The "+t" notation directs Alchemy to learn a separate weight 
+// for each grounding of t
+SegType(s, +t) 
+
+// Aligned wall segments tend to be part of the same wall line
+SegType(s,Wall) ^ SegType(s',Wall) ^ Aligned(s,s') ^ PartOf(s,l) => PartOf(s',l)
+
+/////////////////////////////discrete formulas end///////////////////////////
+
+
+/////////////////////////////hybrid formulas start///////////////////////////
+
+// Typical lengths and depths of door and wall segments
+SegType(s, Door) * (Length(s) = DoorLength)
+SegType(s, Door) * (Depth(s) = DoorDepth)
+SegType(s, Wall) * (Length(s) = WallLength)
+SegType(s, Wall) * (Depth(s) = WallDepth)
+
+// If a segment s belongs to a line l, the slope of s should be the same as 
+// the slope of a line connecting the initial points of s and l, 
+// and similarly for their final points.
+PartOf(s,l) * [((Y_si(s) - Y_li(l))*(X_si(s) - X_sf(s)) = (Y_si(s) - Y_sf(s))*(X_si(s) - X_li(l))) + ((Y_sf(s) - Y_lf(l))*(X_si(s) - X_sf(s)) = (Y_si(s) - Y_sf(s))*(X_sf(s) - X_lf(l)))]
+/////////////////////////////////hybrid formulas end/////////////////////////
+
+/////////////////////////////formulas end////////////////////////////////////
+

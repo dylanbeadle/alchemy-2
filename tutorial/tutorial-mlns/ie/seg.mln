@@ -1,0 +1,21 @@
+// MLN for Information Extraction of Citations
+Token(token, position, citation)
+InField(position, field, citation)
+SameField(field, citation, citation)
+SameCitation(citation, citation)
+
+Token(+t, i, c) => InField(i, +f, c)
+
+InField(i, +f, c) <=> InField(i+1, +f, c)
+
+f != f' => (!Infield(i, +f, c) v !InField(i, +f', c))
+
+Token(+t, i, c) ^ InField(i, +f, c) ^ Token(+t, i', c')
+  ^ InField(i', +f, c') => SameField(+f, c, c')
+
+SameField(+f, c, c') <=> SameCitation(c, c')
+
+SameField(f, c, c') ^ SameField(f, c', c'') => SameField(f, c, c'')
+
+SameCitation(c, c') ^ SameCitation(c', c'') => SameCitation(c, c'')
+

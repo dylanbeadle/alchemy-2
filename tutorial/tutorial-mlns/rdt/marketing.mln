@@ -1,0 +1,14 @@
+person = {1,...,5}
+
+Trusts(person, person)
+MarketTo(person)
+Buys(person)
+
+0.6 Buys(x1) ^ Trusts(x2, x1) => Buys(x2)
+
+0.8 MarketTo(x) => Buys(x)
+
+-2:20 Buys(x)
+
+:-1 MarketTo(x)
+

@@ -1,0 +1,60 @@
+// MLN for logistic regression on voting-records dataset
+// Instances with at least one missing value should have been removed
+// Representatives are the constants 1-232
+
+// Class
+Democrat(rep)
+
+// Predictors
+HandicappedInfants(rep)
+WaterProjectCostSharing(rep)
+AdoptionOfTheBudgetResolution(rep)
+PhysicianFeeFreeze(rep)
+ElSalvadorAid(rep)
+ReligiousGroupsInSchools(rep)
+AntiSatelliteTestBan(rep)
+AidToNicaraguanContras(rep)
+MxMissile(rep)
+Immigration(rep)
+SynfuelsCorporationCutback(rep)
+EducationSpending(rep)
+SuperfundRightToSue(rep)
+Crime(rep)
+DutyFreeExports(rep)
+ExportAdministrationActSouthAfrica(rep)
+
+// Rules
+Democrat(x)
+
+HandicappedInfants(x) ^ Democrat(x)
+
+WaterProjectCostSharing(x) ^ Democrat(x)
+
+AdoptionOfTheBudgetResolution(x) ^ Democrat(x)
+
+PhysicianFeeFreeze(x) ^ Democrat(x)
+
+ElSalvadorAid(x) ^ Democrat(x)
+
+ReligiousGroupsInSchools(x) ^ Democrat(x)
+
+AntiSatelliteTestBan(x) ^ Democrat(x)
+
+AidToNicaraguanContras(x) ^ Democrat(x)
+
+MxMissile(x) ^ Democrat(x)
+
+Immigration(x) ^ Democrat(x)
+
+SynfuelsCorporationCutback(x) ^ Democrat(x)
+
+EducationSpending(x) ^ Democrat(x)
+
+SuperfundRightToSue(x) ^ Democrat(x)
+
+Crime(x) ^ Democrat(x)
+
+DutyFreeExports(x) ^ Democrat(x)
+
+ExportAdministrationActSouthAfrica(x) ^ Democrat(x)
+
