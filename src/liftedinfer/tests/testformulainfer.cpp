@@ -201,7 +201,7 @@ void TestFormulaInfer::readGroundTruth(int id,vector<vector<vector<int> > >& tru
 	filename.append(st);
 	filename.append(".txt");
 	ifstream filestr(filename.c_str());
-	if(filestr == NULL)
+	if(!filestr)
 	{
 		cout<<"Error reading Ground Truth File"<<endl;
 		exit(-1);

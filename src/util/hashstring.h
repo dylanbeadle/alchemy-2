@@ -69,7 +69,7 @@
 #include <string>
 #include <ext/hash_set>
 #include <ext/hash_map>
-using namespace __gnu_cxx;
+//using namespace __gnu_cxx;
 #include "hasharray.h"
 
 class HashString
@@ -77,7 +77,7 @@ class HashString
  public:
   size_t operator()(string const& str) const
   {
-    return hash<char const *>()(str.c_str());
+    return __gnu_cxx::hash<char const *>()(str.c_str());
   }
 };
 
