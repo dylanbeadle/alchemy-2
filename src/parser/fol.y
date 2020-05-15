@@ -64,11 +64,17 @@
  * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  * 
  */
+
 %{
 #define YYSTYPE int
 #define YYDEBUG 1
-%}
+#ifndef YYTOKENTYPE
+#define YYTOKENTYPE
 
+enum yytokentype { ZZ_NUM = 258, ZZ_DOTDOTDOT = 259, ZZ_STRING = 260, ZZ_INCLUDE = 261, ZZ_PREDICATE = 262, ZZ_FUNCTION = 263, ZZ_CONSTANT = 264, ZZ_VARIABLE = 265, ZZ_TYPE = 266, ZZ_FORALL = 267, ZZ_EXIST = 268, ZZ_EQUIV = 269, ZZ_IMPLY = 270 };
+#endif
+
+%}
 
 /*************************** Declarations ***************************/
 // the token 'error' is declared by Bison
@@ -101,7 +107,7 @@
 // This must be in a %code {} section since bison 2.4 so it appears before tokens
 // The comments following { and } must remain intact as they
 // are used to insert the proper directive in replacefoly.pl
-%code { //bisonopencode
+%{ //bisonopencode
 #include "fol.h"
 #include "follex.cpp"
 
@@ -109,7 +115,7 @@
 int folDbg = 0;
 //int folDbg = 1;
 //int folDbg = 2;
-} //bisonclosecode
+%} //bisonclosecode
 
 %% 
 

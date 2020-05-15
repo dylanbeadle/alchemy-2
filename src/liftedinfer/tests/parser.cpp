@@ -331,7 +331,7 @@ void LMParser::parsePredicateString(string line)
 void LMParser::parseInputMLNFile(string filename)
 {
 	fstream filestr(filename.c_str());
-	if(filestr == NULL)
+	if(!filestr)
 	{
 		cout<<"Error reading LvrMLN File"<<endl;
 		exit(-1);
@@ -433,7 +433,7 @@ bool LMParser::checkTermsValidity(int predicateId,vector<string> terms, vector<i
 void LMParser::parseDB(string filename)
 {
 	ifstream filestr(filename.c_str());
-	if(filestr == NULL)
+	if(!filestr)
 	{
 		cout<<"Error reading DB File"<<endl;
 		return;

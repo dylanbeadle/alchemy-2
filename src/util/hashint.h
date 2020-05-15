@@ -66,7 +66,7 @@
 #ifndef HASHINT_H_NOV_10_2005
 #define HASHINT_H_NOV_10_2005
 
-using namespace __gnu_cxx;
+//using namespace __gnu_cxx;
 #include "hasharray.h"
 #include "hash.h"
 #include <string.h>
@@ -74,7 +74,7 @@ using namespace __gnu_cxx;
 class HashInt
 {
  public:
-  size_t operator()(const int& i) const { return hash<int>()(i); }
+  size_t operator()(const int& i) const { return __gnu_cxx::hash<int>()(i); }
 };
 
 class EqualInt

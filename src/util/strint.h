@@ -69,7 +69,7 @@
 
 #include <cstdlib>
 #include <ext/hash_map>
-using namespace __gnu_cxx;
+//using namespace __gnu_cxx;
 
 
 struct StrInt
@@ -109,7 +109,7 @@ class HashStrInt
  public:
   size_t operator()(const StrInt* const & s) const
   {
-    return hash<char const *>()(s->str_);
+    return __gnu_cxx::hash<char const *>()(s->str_);
   }
 };
 
