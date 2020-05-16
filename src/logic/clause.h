@@ -298,7 +298,12 @@ class Clause
   bool isDirty() const { return dirty_; }
 
     // Caller should not delete returned Predicate*.
-  Predicate* getPredicate(const int& idx) const { return (*predicates_)[idx]; }
+  Predicate* getPredicate(const int& idx) const { 
+    if (idx > 0 && idx < getNumPredicates()){
+      return (*predicates_)[idx]; 
+    }
+    else return NULL;
+  }
   
     // Caller should not delete returned array nor modify its contents.
   const Array<Predicate*>* getPredicates() const { return predicates_; }
