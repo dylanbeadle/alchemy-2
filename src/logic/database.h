@@ -1057,6 +1057,9 @@ class Database
                          bool const & ignoreActivePreds,
                          bool const & trueGndings)
   {
+    if (pred == NULL){
+        return; // nothing to do here
+    }
     int predId = pred->getId();
       // All terms are grounded: just return itself
     if (pred->isGrounded())
