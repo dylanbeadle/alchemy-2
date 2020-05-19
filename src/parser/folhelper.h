@@ -1901,7 +1901,7 @@ void zzaddGndPredsToDb(Database* const & db)
     for (int j = 0; j < clause->getNumPredicates(); j++)
     {
       Predicate* pred = clause->getPredicate(j);
-      if (!db->isClosedWorld(pred->getId()))
+      if (pred && !db->isClosedWorld(pred->getId()))
       {
         nonEvidPred[j] = true;
         oneNonEvidPred = true;

@@ -437,7 +437,7 @@ class MRF
     {
       for (int i = 0; i < c->getNumPredicates(); i++)
       {
-        if (c->getPredicate(i)->canBeGroundedAs(queryGndPred))
+        if (c->getPredicate(i) != NULL && c->getPredicate(i)->canBeGroundedAs(queryGndPred))
           c->addUnknownClauses(domain, db, i, queryGndPred, agcs);
       }
     }
