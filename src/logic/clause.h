@@ -299,7 +299,7 @@ class Clause
 
     // Caller should not delete returned Predicate*.
   Predicate* getPredicate(const int& idx) const { 
-    if (idx > 0 && idx < getNumPredicates()){
+    if (idx >= 0 && idx < getNumPredicates()){
       return (*predicates_)[idx]; 
     }
     else return NULL;
