@@ -1508,10 +1508,12 @@ class DiscriminativeLearner
 
         for (int i = 0; i < clause->getNumPredicates(); i++)
         {
-          const char* predName =
-            clause->getPredicate(i)->getTemplate()->getName();
-          if (nonEvidPredNames.contains(predName))
-            nonEvidPreds++;
+          if (clause->getPredicate(i)) {
+            const char* predName =
+              clause->getPredicate(i)->getTemplate()->getName();
+            if (nonEvidPredNames.contains(predName))
+              nonEvidPreds++;
+	  }
         }
       }
 
