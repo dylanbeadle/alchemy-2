@@ -5,3 +5,11 @@ Outcome(throw, face!)
 
 // Learn weight for each face
 Outcome(t, +f)
+
+
+// 1 Outcome(t, 1)
+// 1 Outcome(t, 2)
+// 1 Outcome(t, 3)
+// 1 Outcome(t, 4)
+// 1 Outcome(t, 5)
+// 1 Outcome(t, 6)
